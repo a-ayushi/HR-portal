@@ -8,15 +8,11 @@ import com.HR.portal.model.Employee;
 import com.HR.portal.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
-
-//@CrossOrigin(origins = "http://localhost:8080")
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/emp")
@@ -55,13 +51,13 @@ public class EmpController {
     }
 
 
-    // ❌ Handle EmployeeNotFoundException
+    //  Handle EmployeeNotFoundException
     @ExceptionHandler(EmployeeNotFoundException.class)
     public ResponseEntity<String> handleEmployeeNotFoundException(EmployeeNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-    // ❌ Handle InvalidSalaryException
+    //  Handle InvalidSalaryException
     @ExceptionHandler(InvalidSalaryException.class)
     public ResponseEntity<String> handleInvalidSalaryException(InvalidSalaryException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
